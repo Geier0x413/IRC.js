@@ -25,10 +25,10 @@ export default class Tags {
     input = input.startsWith( at ) ? input.replace( at , "" ) : input;
 
     input.split( ";" ).forEach( tag => {
-      tag = new RegExp( /(?<key>.+)\=(?<value>.+)/i ).exec( tag );
+      tag = new RegExp( /(?<key>.+)\=(?<value>.+)?/i ).exec( tag );
       tag = tag?.groups;
 
-      if ( !Tags.reserved.includes( tag?.key ) ) this[ tag.key ] = tag.value;
+      if ( !Tags.reserved.includes( tag?.key ) ) this[ tag.key ] = tag.value || "";
     } );
   }
 
